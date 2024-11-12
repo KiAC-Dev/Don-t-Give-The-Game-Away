@@ -53,3 +53,6 @@ TagManager:
   - name: Character
     uniqueID: 1560258247
     locked: 0
+  - name: wallpaper
+    uniqueID: 1947122801
+    locked: 0
