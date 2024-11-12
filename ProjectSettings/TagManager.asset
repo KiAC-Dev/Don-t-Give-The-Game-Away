@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Floor
+    uniqueID: 3405243859
+    locked: 0
+  - name: Door
+    uniqueID: 963935947
+    locked: 0
+  - name: Stairs
+    uniqueID: 3411480883
+    locked: 0
+  - name: Character
+    uniqueID: 1560258247
+    locked: 0
