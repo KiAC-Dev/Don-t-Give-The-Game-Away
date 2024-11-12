@@ -6,7 +6,7 @@ using Spine.Unity;
 public class Kitkincontrols : MonoBehaviour
 {
 
-    public float speed = 0.5f;
+    public float speed = 0.8f;
     public SkeletonAnimation SkeletonAnimation;
 
     // Start is called before the first frame update
@@ -34,13 +34,13 @@ public class Kitkincontrols : MonoBehaviour
         }
         else
         {
-            GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "idle", true);
+            _ = GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "idle", true);
 
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow)) { GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Walk", true); }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Walk", true);
+            _ = GetComponent<SkeletonAnimation>().AnimationState.SetAnimation(0, "Walk", true);
         }
     }
 }
