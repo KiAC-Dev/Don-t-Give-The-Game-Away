@@ -6,7 +6,7 @@ using Spine.Unity;
 public class Kitkincontrols : MonoBehaviour
 {
 
-    public float speed = 0.8f;
+    public float speed = 1.5f;
     public SkeletonAnimation SkeletonAnimation;
 
     // Start is called before the first frame update
