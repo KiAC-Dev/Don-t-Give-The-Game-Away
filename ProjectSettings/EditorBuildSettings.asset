@@ -29,4 +29,5 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Konijnbedroom.unity
     guid: f78f0709769ad40838f568d78c5de84b
-  m_configObjects: {}
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 2f15cc4975fca3447b9b799ae394d42f, type: 2}

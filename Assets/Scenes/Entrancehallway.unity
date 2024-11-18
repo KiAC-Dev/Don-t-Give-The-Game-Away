@@ -199,11 +199,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.5611033, y: 7.541153, z: -19.95014}
+  m_LocalScale: {x: 1.9950141, y: 1.9950141, z: 1.9950141}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1738331220}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1107326907
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 1107326909}
   - component: {fileID: 1107326908}
   m_Layer: 0
-  m_Name: Hallwayfloor
+  m_Name: Hallway Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -313,7 +313,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1738331216
 GameObject:
@@ -326,13 +326,14 @@ GameObject:
   - component: {fileID: 1738331220}
   - component: {fileID: 1738331219}
   - component: {fileID: 1738331218}
-  - component: {fileID: 1738331217}
   - component: {fileID: 1738331221}
+  - component: {fileID: 1738331224}
+  - component: {fileID: 1738331217}
   - component: {fileID: 1738331222}
   - component: {fileID: 1738331223}
   m_Layer: 0
   m_Name: Spine GameObject (Katkin)
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -377,7 +378,7 @@ MonoBehaviour:
   physicsMovementRelativeTo: {fileID: 0}
   updateTiming: 1
   unscaledTime: 0
-  _animationName: idle
+  _animationName: Walk
   loop: 1
   timeScale: 1
 --- !u!23 &1738331218
@@ -437,11 +438,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738331216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.79, y: -3.78, z: 0}
+  m_LocalPosition: {x: 2.32, y: -3.78, z: 0}
   m_LocalScale: {x: 0.5012496, y: 0.5012496, z: 0.5012496}
-  m_Children: []
+  m_Children:
+  - {fileID: 519420032}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1738331221
 MonoBehaviour:
@@ -456,7 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
-  SkeletonAnimation: {fileID: 1738331217}
+  animationHandler: {fileID: 1738331224}
 --- !u!50 &1738331222
 Rigidbody2D:
   serializedVersion: 4
@@ -477,7 +479,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 3
+  m_Constraints: 7
 --- !u!61 &1738331223
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -504,6 +506,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 7.782089, y: 8.88436}
   m_EdgeRadius: 0
+--- !u!114 &1738331224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1738331216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e92bd1b24b3aacc40a5568b4ea511697, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skeletonAnimation: {fileID: 1738331217}
+  blinkTimeRange: {x: 0.5, y: 3}
+  blinkTimer: 0
+  blinkDelay: 0
 --- !u!1 &1757549524
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,7 +602,7 @@ Transform:
   m_LocalScale: {x: 0.19273566, y: 0.19273566, z: 0.19273566}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1774930859
 GameObject:
@@ -596,11 +614,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1774930861}
   - component: {fileID: 1774930860}
-  - component: {fileID: 1774930862}
   - component: {fileID: 1774930864}
   - component: {fileID: 1774930863}
   m_Layer: 0
-  m_Name: door1
+  m_Name: Door 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -669,20 +686,8 @@ Transform:
   m_LocalScale: {x: 0.89, y: 0.89, z: 0.89}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1774930862
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1774930859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adecdaf3bb1194f3480516e961e4c2d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1774930863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,9 +697,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1774930859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adecdaf3bb1194f3480516e961e4c2d9, type: 3}
+  m_Script: {fileID: 11500000, guid: 7653a179c60ee7e449e8e388d8ffb8d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetScene: Livingroom
 --- !u!61 &1774930864
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -732,7 +738,7 @@ GameObject:
   - component: {fileID: 2048600353}
   - component: {fileID: 2048600352}
   m_Layer: 0
-  m_Name: stairs
+  m_Name: Stairs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -801,5 +807,5 @@ Transform:
   m_LocalScale: {x: 1, y: 0.9307, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
