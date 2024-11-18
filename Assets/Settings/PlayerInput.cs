@@ -33,6 +33,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pickup"",
+                    ""type"": ""Button"",
+                    ""id"": ""b35aae1f-8ac7-41ad-afad-3a9008946c96"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -211,6 +219,17 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""action"": ""UseTransition"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0d6b1f8a-cf5e-4b61-bfa4-6c1ddafe30b0"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pickup"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -221,6 +240,7 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Walk = m_Gameplay.FindAction("Walk", throwIfNotFound: true);
         m_Gameplay_UseTransition = m_Gameplay.FindAction("UseTransition", throwIfNotFound: true);
+        m_Gameplay_Pickup = m_Gameplay.FindAction("Pickup", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -272,12 +292,14 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Walk;
     private readonly InputAction m_Gameplay_UseTransition;
+    private readonly InputAction m_Gameplay_Pickup;
     public struct GameplayActions
     {
         private @PlayerInput m_Wrapper;
         public GameplayActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Walk => m_Wrapper.m_Gameplay_Walk;
         public InputAction @UseTransition => m_Wrapper.m_Gameplay_UseTransition;
+        public InputAction @Pickup => m_Wrapper.m_Gameplay_Pickup;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -293,6 +315,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @UseTransition.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUseTransition;
                 @UseTransition.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUseTransition;
                 @UseTransition.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnUseTransition;
+                @Pickup.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickup;
+                @Pickup.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickup;
+                @Pickup.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPickup;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -303,6 +328,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                 @UseTransition.started += instance.OnUseTransition;
                 @UseTransition.performed += instance.OnUseTransition;
                 @UseTransition.canceled += instance.OnUseTransition;
+                @Pickup.started += instance.OnPickup;
+                @Pickup.performed += instance.OnPickup;
+                @Pickup.canceled += instance.OnPickup;
             }
         }
     }
@@ -311,5 +339,6 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     {
         void OnWalk(InputAction.CallbackContext context);
         void OnUseTransition(InputAction.CallbackContext context);
+        void OnPickup(InputAction.CallbackContext context);
     }
 }

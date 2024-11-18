@@ -1,6 +1,4 @@
 using Spine.Unity;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AnimationHandler : MonoBehaviour
@@ -19,6 +17,7 @@ public class AnimationHandler : MonoBehaviour
         Blink();
     }
 
+    #region SetAnimation
     public void SetAnimation(int index, string state, bool loop)
     {
         if (skeletonAnimation.AnimationName == state) return;
@@ -39,9 +38,41 @@ public class AnimationHandler : MonoBehaviour
     {
         SetAnimation(0, state, loop);
     }
+    #endregion SetAnimation
 
-    [SerializeField] float blinkTimer = 0;
-    [SerializeField] float blinkDelay;
+    #region AddAnimation
+    public void AddAnimation(int index, string state, bool loop)
+    {
+        if (skeletonAnimation.AnimationName == state) return;
+        skeletonAnimation.AnimationState.AddAnimation(index, state, loop, 0);
+    }
+
+    public void AddAnimation(string state)
+    {
+        AddAnimation(0, state, true);
+    }
+
+    public void AddAnimation(int index, string state)
+    {
+        AddAnimation(index, state, true);
+    }
+
+    public void AddAnimation(string state, bool loop)
+    {
+        AddAnimation(0, state, loop);
+    }
+    #endregion AddAnimation
+
+    #region RemoveAnimation
+    public void RemoveAnimation(int index)
+    {
+        skeletonAnimation.AnimationState.SetEmptyAnimation(index, 0);
+    }
+    #endregion RemoveAnimation
+
+    #region Blink
+    float blinkTimer = 0;
+    float blinkDelay;
     private void Blink()
     {
         if (blinkTimer > blinkDelay)
@@ -51,9 +82,10 @@ public class AnimationHandler : MonoBehaviour
             //Pick a random time between the set ranges for the next blink.
             blinkDelay = Random.Range(blinkTimeRange.x, blinkTimeRange.y);
 
-            skeletonAnimation.state.AddAnimation(1, "Blinking", false, 0);
+            AddAnimation(1, "Blinking", false);
         }
 
         blinkTimer += Time.deltaTime;
     }
+    #endregion Blink
 }

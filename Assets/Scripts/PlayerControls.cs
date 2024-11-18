@@ -7,6 +7,7 @@ public class PlayerControls : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] private float speed = 1.5f;
+    private bool isHoldingObject;
 
     [Header("Refereces")]
     [SerializeField] private AnimationHandler animationHandler;
@@ -16,9 +17,20 @@ public class PlayerControls : MonoBehaviour
     {
         inputActions = new PlayerInput();
         inputActions.Gameplay.Enable();
+
+        isHoldingObject = false;
     }
 
     private void Update()
+    {
+        Movement();
+
+        if (isHoldingObject)
+            animationHandler.AddAnimation(2, "holding-present", true);
+        else animationHandler.RemoveAnimation(2);
+    }
+
+    private void Movement()
     {
         float step = speed * Time.deltaTime;
         float walkInput = inputActions.Gameplay.Walk.ReadValue<float>();
