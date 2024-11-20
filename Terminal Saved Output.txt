@@ -1,0 +1,23 @@
+Last login: Wed Nov 20 10:56:17 on ttys000
+maddysutherland@Maddys-MacBook-Pro Don-t-Give-The-Game-Away % echo .DS_Store >> ~/.gitignore_global
+git config --global core.excludesfile ~/.gitignore_global
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
