@@ -44,17 +44,20 @@ TagManager:
   - name: wallpaper
     uniqueID: 1947122801
     locked: 0
+  - name: Pictures
+    uniqueID: 1452479621
+    locked: 0
   - name: Floor
     uniqueID: 3405243859
+    locked: 0
+  - name: Door
+    uniqueID: 963935947
     locked: 0
   - name: Character
     uniqueID: 1560258247
     locked: 0
   - name: Furniture
     uniqueID: 2676978325
-    locked: 0
-  - name: Door
-    uniqueID: 963935947
     locked: 0
   - name: Stairs
     uniqueID: 3411480883
