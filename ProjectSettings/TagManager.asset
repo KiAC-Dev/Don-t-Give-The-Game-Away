@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Item
+  - Transition
   layers:
   - Default
   - TransparentFX
@@ -53,12 +55,12 @@ TagManager:
   - name: Door
     uniqueID: 963935947
     locked: 0
-  - name: Character
-    uniqueID: 1560258247
-    locked: 0
   - name: Furniture
     uniqueID: 2676978325
     locked: 0
   - name: Stairs
     uniqueID: 3411480883
+    locked: 0
+  - name: Character
+    uniqueID: 1560258247
     locked: 0

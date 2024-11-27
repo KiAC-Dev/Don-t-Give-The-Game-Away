@@ -1,32 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Spine.Unity;
 
 public class PlayerControls : MonoBehaviour
 {
     [Header("Stats")]
     [SerializeField] private float speed = 1.5f;
-    private bool isHoldingObject;
 
     [Header("Refereces")]
     [SerializeField] private AnimationHandler animationHandler;
+    [SerializeField] private Inventory inventory;
     private PlayerInput inputActions;
 
     private void Start()
     {
         inputActions = new PlayerInput();
         inputActions.Gameplay.Enable();
+        DontDestroyOnLoad(gameObject);
 
-        isHoldingObject = false;
+        if(inventory == null) inventory = GetComponent<Inventory>();
+
+        if(GameObject.FindGameObjectsWithTag("Player").Length > 1) Destroy(gameObject);
     }
 
     private void Update()
     {
         Movement();
 
-        if (isHoldingObject)
-            animationHandler.AddAnimation(2, "holding-present", true);
+        if (inventory.isHoldingItem)
+            animationHandler.AddAnimation(2, "holding-present", true, 0);
         else animationHandler.RemoveAnimation(2);
     }
 

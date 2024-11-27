@@ -1,3 +1,4 @@
+using Spine;
 using Spine.Unity;
 using UnityEngine;
 
@@ -41,25 +42,9 @@ public class AnimationHandler : MonoBehaviour
     #endregion SetAnimation
 
     #region AddAnimation
-    public void AddAnimation(int index, string state, bool loop)
+    public TrackEntry AddAnimation(int index, string state, bool loop, float delay)
     {
-        if (skeletonAnimation.AnimationName == state) return;
-        skeletonAnimation.AnimationState.AddAnimation(index, state, loop, 0);
-    }
-
-    public void AddAnimation(string state)
-    {
-        AddAnimation(0, state, true);
-    }
-
-    public void AddAnimation(int index, string state)
-    {
-        AddAnimation(index, state, true);
-    }
-
-    public void AddAnimation(string state, bool loop)
-    {
-        AddAnimation(0, state, loop);
+        return skeletonAnimation.state.AddAnimation(index, state, loop, delay);
     }
     #endregion AddAnimation
 
@@ -70,22 +55,8 @@ public class AnimationHandler : MonoBehaviour
     }
     #endregion RemoveAnimation
 
-    #region Blink
-    float blinkTimer = 0;
-    float blinkDelay;
     private void Blink()
     {
-        if (blinkTimer > blinkDelay)
-        {
-            blinkTimer = 0;
-
-            //Pick a random time between the set ranges for the next blink.
-            blinkDelay = Random.Range(blinkTimeRange.x, blinkTimeRange.y);
-
-            AddAnimation(1, "Blinking", false);
-        }
-
-        blinkTimer += Time.deltaTime;
+        AddAnimation(1, "Blinking", false, 3);
     }
-    #endregion Blink
 }
