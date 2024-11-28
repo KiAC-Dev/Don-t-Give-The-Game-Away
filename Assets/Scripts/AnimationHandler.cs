@@ -55,6 +55,13 @@ public class AnimationHandler : MonoBehaviour
     }
     #endregion RemoveAnimation
 
+    #region SetSkin
+    public void SetSkin(string skin)
+    {
+        skeletonAnimation.skeleton.SetSkin(skin);
+    }
+    #endregion SetSkin
+
     private void Blink()
     {
         AddAnimation(1, "Blinking", false, 3);

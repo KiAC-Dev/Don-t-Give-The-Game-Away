@@ -21,4 +21,17 @@ public class Transition : MonoBehaviour
         }
         return targetDoor;
     }
+
+    public void UseTransitionVoid()
+    {
+        try
+        {
+            SceneManager.LoadScene(targetScene);
+        }
+
+        catch (NullReferenceException)
+        {
+            throw new NullReferenceException(targetScene + " is not a valid scene name!");
+        }
+    }
 }

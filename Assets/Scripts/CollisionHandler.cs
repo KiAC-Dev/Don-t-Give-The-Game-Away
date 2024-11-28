@@ -8,6 +8,7 @@ public class CollisionHandler : MonoBehaviour
     [SerializeField] private Inventory inventory;
     [SerializeField] private PlayerControls playerControls;
     [SerializeField] private ItemTracker itemTracker;
+    [SerializeField] private AnimationHandler animationHandler;
     private PlayerInput inputActions;
     public int targetDoor;
     private bool pickupPressed, transitionPressed, pickupToggle, transitionToggle = false;
@@ -16,6 +17,8 @@ public class CollisionHandler : MonoBehaviour
     private void Start()
     {
         if(inventory == null) inventory = GetComponent<Inventory>();
+        if(playerControls == null) playerControls = GetComponent<PlayerControls>();
+        if(animationHandler == null) animationHandler = GetComponent<AnimationHandler>();
         inputActions = new PlayerInput();
         inputActions.Gameplay.Enable();
     }
@@ -43,8 +46,9 @@ public class CollisionHandler : MonoBehaviour
             itemObject.transform.parent = null;
             SceneManager.MoveGameObjectToScene(itemObject, SceneManager.GetActiveScene());
             itemObject.transform.position = new Vector3(transform.position.x, -3.429f, 0f);
+            itemObject.SetActive(true);
             itemTracker.AddItem(itemObject);
-            
+            animationHandler.SetSkin("default");
         }
     }
 
@@ -83,6 +87,8 @@ public class CollisionHandler : MonoBehaviour
             inventory.isHoldingItem = true;
             itemObject.transform.parent = transform;
             itemObject.transform.localPosition = new Vector3(0.26f, 3.05f, 0f);
+            itemObject.SetActive(false);
+            animationHandler.SetSkin("KK_Present_1");
         }
     }
 }
