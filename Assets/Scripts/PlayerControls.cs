@@ -1,3 +1,4 @@
+using System.Net.Sockets;
 using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] private float speed = 1.5f;
 
     [Header("Refereces")]
+    public WalkLimiter walkLimiter;
     [SerializeField] private AnimationHandler animationHandler;
     [SerializeField] private Inventory inventory;
     private PlayerInput inputActions;
@@ -35,7 +37,7 @@ public class PlayerControls : MonoBehaviour
         float step = speed * Time.deltaTime;
         float walkInput = inputActions.Gameplay.Walk.ReadValue<float>();
 
-        if (walkInput < 0)
+        if (walkInput < 0 && transform.position.x > walkLimiter.bounds.x)
         {
 
             transform.position -= transform.right * step;
@@ -43,7 +45,7 @@ public class PlayerControls : MonoBehaviour
 
             animationHandler.SetAnimation("Walk");
         }
-        if (walkInput > 0)
+        if (walkInput > 0 && transform.position.x < walkLimiter.bounds.y)
         {
             transform.position += transform.right * step;
             transform.localScale = new Vector3(0.5012f, 0.5012f, 0.5012f);

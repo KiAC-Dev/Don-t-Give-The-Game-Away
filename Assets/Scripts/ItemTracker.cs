@@ -11,6 +11,7 @@ public class ItemTracker : MonoBehaviour
 
     private void Start()
     {
+        if(GameObject.FindObjectsOfType<ItemTracker>().Length > 1) Destroy(gameObject);
         if(giftCollector == null) giftCollector = new GiftCollector();
         DontDestroyOnLoad(this);
     }

@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: dc1b2cfdc563c6544befe8cc1520b658
+  - enabled: 1
+    path: Assets/Scenes/Landingscreen.unity
+    guid: 6d8e431f184d441fa89f7a67272e8ab7
   - enabled: 1
     path: Assets/Scenes/Entrancehallway.unity
     guid: 2cda990e2423bbf4892e6590ba056729
@@ -32,5 +35,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Konijnbedroom.unity
     guid: f78f0709769ad40838f568d78c5de84b
+  - enabled: 1
+    path: Assets/Scenes/Endscreen.unity
+    guid: c3067587d28fb430ebb3c916992ae36a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 2f15cc4975fca3447b9b799ae394d42f, type: 2}
