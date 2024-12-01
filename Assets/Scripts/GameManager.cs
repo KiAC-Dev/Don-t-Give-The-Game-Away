@@ -42,8 +42,8 @@ public class GameManager : MonoBehaviour
 
     private string GetTime()
     {
-        int minute = 5 - Mathf.FloorToInt(timer / 60);
-        int seconds = 60 - Mathf.FloorToInt(timer % 60);
+        int minute = 4 - Mathf.FloorToInt(timer / 60);
+        int seconds = 59 - Mathf.FloorToInt(timer % 60);
         string firstDigit = seconds < 10 ? "0" : "";
 
         return minute + ":" + firstDigit + seconds;
