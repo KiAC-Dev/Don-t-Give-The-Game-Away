@@ -1,29 +1,31 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ItemTracker : MonoBehaviour
 {
-    [SerializeField] GameObject giftPrefab;
+    [SerializeField] private GameObject giftPrefab;
     public List<ItemSaveData> items;
+    public GiftCollector giftCollector;
 
     private void Start()
     {
+        if(giftCollector == null) giftCollector = new GiftCollector();
         DontDestroyOnLoad(this);
     }
 
     public void AddItem(GameObject item)
     {
         items.Add(new ItemSaveData(SceneManager.GetActiveScene().name, item.transform.position, item.transform.rotation, item.transform.localScale));
+        if (item.scene.name == "Attic") giftCollector.AddPresent();
     }
 
     public void RemoveItem(GameObject item)
     {
         ItemSaveData itemToRemove = new ItemSaveData(SceneManager.GetActiveScene().name, item.transform.position, item.transform.rotation, item.transform.localScale);
-
         items.Remove(itemToRemove);
+        if (itemToRemove.scene == "Attic") giftCollector.RemovePresent();
     }
 
     public void LoadItems()
