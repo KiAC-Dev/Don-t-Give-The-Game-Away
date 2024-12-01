@@ -10,7 +10,7 @@ public class PlayerControls : MonoBehaviour
     public WalkLimiter walkLimiter;
     [SerializeField] private AnimationHandler animationHandler;
     [SerializeField] private Inventory inventory;
-    private PlayerInput inputActions;
+    public PlayerInput inputActions;
 
     private void Start()
     {
@@ -25,7 +25,10 @@ public class PlayerControls : MonoBehaviour
 
     private void Update()
     {
-        Movement();
+        if(Time.timeScale > 0)
+        {
+            Movement();
+        }
 
         if (inventory.isHoldingItem)
             animationHandler.AddAnimation(2, "holding-present", true, 0);
